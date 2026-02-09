@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat WhatsApp</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0b141a;
+}
+.app{
+  max-width:420px;
+  margin:auto;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#111b21;
+}
+.top{
+  background:#202c33;
+  color:#fff;
+  padding:14px;
+  font-weight:bold;
+}
+.msgs{
+  flex:1;
+  padding:10px;
+  overflow:auto;
+}
+.msg{
+  margin:6px 0;
+  padding:10px 12px;
+  border-radius:8px;
+  max-width:80%;
+  color:#fff;
+}
+.me{
+  background:#005c4b;
+  margin-left:auto;
+}
+.other{
+  background:#202c33;
+}
+.bar{
+  display:flex;
+  padding:10px;
+  background:#202c33;
+}
+.bar input{
+  flex:1;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+}
+.bar button{
+  margin-left:6px;
+  border:none;
+  border-radius:20px;
+  padding:10px 16px;
+  background:#00a884;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+  <div class="top">Atendimento</div>
+
+  <div id="msgs" class="msgs">
+    <div class="msg other">Oi 👋</div>
+  </div>
+
+  <div class="bar">
+    <input id="txt" placeholder="Mensagem">
+    <button onclick="send()">Enviar</button>
+  </div>
+</div>
+
+<script>
+function send(){
+  const txt = document.getElementById("txt");
+  if(txt.value === "") return;
+
+  const msg = document.createElement("div");
+  msg.className = "msg me";
+  msg.innerText = txt.value;
+
+  document.getElementById("msgs").appendChild(msg);
+  txt.value = "";
+}
+</script>
+</body>
+</html>
